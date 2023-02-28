@@ -1,5 +1,8 @@
 # Monobank Currency Rate Bot
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/1b6fb233319f4159b1280f2c7d8770d0)](https://www.codacy.com/gl/bot-by/monoratebot/dashboard?utm_source=gitlab.com&utm_medium=referral&utm_content=bot-by/monoratebot&utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/1b6fb233319f4159b1280f2c7d8770d0)](https://www.codacy.com/gl/bot-by/monoratebot/dashboard?utm_source=gitlab.com&utm_medium=referral&utm_content=bot-by/monoratebot&utm_campaign=Badge_Coverage)
+
 TODO: Write a project description
 
 ## Installation
