@@ -434,7 +434,7 @@
     <aws-plugin.version>0.2.33</aws-plugin.version>
     <changelist>-SNAPSHOT</changelist>
     <clean-plugin.version>3.2.0</clean-plugin.version>
-    <compiler-plugin.version>3.10.1</compiler-plugin.version>
+    <compiler-plugin.version>3.11.0</compiler-plugin.version>
     <enforcer-plugin.version>3.2.1</enforcer-plugin.version>
     <failsafe-plugin.version>2.22.2</failsafe-plugin.version>
     <feign-core.version>12.2</feign-core.version>
