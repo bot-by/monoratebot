@@ -113,6 +113,9 @@
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
+          <classpathDependencyExcludes>
+            <classpathDependencyExclude>uk.bot-by:slf4j-aws-lambda</classpathDependencyExclude>
+          </classpathDependencyExcludes>
           <properties>
             <groups>fast</groups>
           </properties>
@@ -182,7 +185,9 @@
         <artifactId>maven-failsafe-plugin</artifactId>
         <configuration>
           <classpathDependencyExcludes>
-            <classpathDependencyExclude>ch.qos.logback:logback-classic</classpathDependencyExclude>
+            <classpathDependencyExclude>com.ocarlsen.test:mock-slf4j-impl
+            </classpathDependencyExclude>
+            <classpathDependencyExclude>uk.bot-by:slf4j-aws-lambda</classpathDependencyExclude>
           </classpathDependencyExcludes>
           <environmentVariables>
             <BOT_LOG_LEVEL>TRACE</BOT_LOG_LEVEL>
@@ -285,7 +290,6 @@
                   </limits>
                 </rule>
               </rules>
-              <skip>true</skip>
             </configuration>
             <goals>
               <goal>check</goal>
@@ -405,6 +409,12 @@
       <version>${hamcrest.version}</version>
     </dependency>
     <dependency>
+      <artifactId>mock-slf4j-impl</artifactId>
+      <groupId>com.ocarlsen.test</groupId>
+      <scope>test</scope>
+      <version>${mock-slf4j-impl.version}</version>
+    </dependency>
+    <dependency>
       <artifactId>junit-pioneer</artifactId>
       <groupId>org.junit-pioneer</groupId>
       <scope>test</scope>
@@ -454,8 +464,8 @@
     <maven.compiler.release>11</maven.compiler.release>
     <minimal-version.java>11</minimal-version.java>
     <minimal-version.maven>3.8.1</minimal-version.maven>
+    <mock-slf4j-impl.version>2.0.0</mock-slf4j-impl.version>
     <mockito.version>5.1.1</mockito.version>
-    <mockserver.version>5.11.2</mockserver.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <propertiesEncoding>ISO-8859-1</propertiesEncoding>
