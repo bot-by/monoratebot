@@ -434,7 +434,7 @@
     <aws-plugin.version>0.2.33</aws-plugin.version>
     <changelist>-SNAPSHOT</changelist>
     <clean-plugin.version>3.2.0</clean-plugin.version>
-    <compiler-plugin.version>3.10.1</compiler-plugin.version>
+    <compiler-plugin.version>3.11.0</compiler-plugin.version>
     <enforcer-plugin.version>3.2.1</enforcer-plugin.version>
     <failsafe-plugin.version>2.22.2</failsafe-plugin.version>
     <feign-core.version>12.2</feign-core.version>
@@ -445,7 +445,7 @@
     <jacoco-plugin.version>0.8.8</jacoco-plugin.version>
     <jar-plugin.version>3.3.0</jar-plugin.version>
     <jetbrains-annotations.version>24.0.0</jetbrains-annotations.version>
-    <json.version>20220924</json.version>
+    <json.version>20230227</json.version>
     <junit-jupiter.version>5.9.2</junit-jupiter.version>
     <junit-pioneer.version>2.0.0</junit-pioneer.version>
     <lambda-core.version>1.2.2</lambda-core.version>
@@ -463,7 +463,7 @@
     <revision>1.0.0</revision>
     <sha1/>
     <shade-plugin.version>3.4.1</shade-plugin.version>
-    <slf4j-aws-lambda.version>3.0.3</slf4j-aws-lambda.version>
+    <slf4j-aws-lambda.version>3.0.5</slf4j-aws-lambda.version>
     <slf4j.version>2.0.5</slf4j.version>
     <surefire-plugin.version>2.22.2</surefire-plugin.version>
     <templating-plugin.version>1.0.0</templating-plugin.version>
