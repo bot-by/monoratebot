@@ -1,4 +1,4 @@
-package uk.bot_by.monoratebot.aws_lambda;
+package uk.bot_by.cloud_bot.aws_lambda;
 
 import static java.util.Collections.singletonMap;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -10,6 +10,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.clearInvocations;
 import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
@@ -29,13 +30,12 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import uk.bot_by.monoratebot.bot.Update;
-import uk.bot_by.monoratebot.bot.UpdateFactory;
+import uk.bot_by.cloud_bot.telegram_bot.Update;
+import uk.bot_by.cloud_bot.telegram_bot.UpdateFactory;
 
 @ExtendWith(MockitoExtension.class)
 @Tag("fast")
@@ -47,8 +47,6 @@ class BotHandlerFastTest {
   private ArgumentCaptor<String> bodyCaptor;
   @Mock
   private Context context;
-  @InjectMocks
-  private BotHandler handler;
   @Mock
   private APIGatewayProxyRequestEvent requestEvent;
   @Mock
@@ -56,9 +54,11 @@ class BotHandlerFastTest {
   @Mock
   private UpdateFactory updateFactory;
 
+  private BotHandler handler;
+
   @BeforeAll
   static void setUpClass() {
-    logger = LoggerFactory.getLogger(BotHandler.class);
+    logger = LoggerFactory.getLogger(TestHandler.class);
   }
 
   @AfterEach
@@ -68,7 +68,7 @@ class BotHandlerFastTest {
 
   @BeforeEach
   void setUp() {
-    when(context.getAwsRequestId()).thenReturn("test-id");
+    handler = spy(new TestHandler(updateFactory));
   }
 
   @DisplayName("A request event with an empty body")
@@ -84,7 +84,6 @@ class BotHandlerFastTest {
     var responseEvent = handler.handleRequest(requestEvent, context);
 
     // then
-    verify(context).getAwsRequestId();
     verify(logger).warn("Empty request from {}", "1.2.3.4.5");
 
     assertAll("Response", () -> assertEquals("OK", responseEvent.getBody()),
@@ -102,7 +101,6 @@ class BotHandlerFastTest {
     var responseEvent = handler.handleRequest(requestEvent, context);
 
     // then
-    verify(context).getAwsRequestId();
     verify(updateFactory).parseUpdate("test body");
     verify(update, never()).call();
     verifyNoInteractions(logger);
@@ -123,7 +121,6 @@ class BotHandlerFastTest {
     var responseEvent = handler.handleRequest(requestEvent, context);
 
     // then
-    verify(context).getAwsRequestId();
     verify(updateFactory).parseUpdate("test body");
     verify(update).call();
     verifyNoInteractions(logger);
@@ -147,7 +144,6 @@ class BotHandlerFastTest {
     var responseEvent = handler.handleRequest(requestEvent, context);
 
     // then
-    verify(context).getAwsRequestId();
     verify(updateFactory).parseUpdate(body);
     verify(update).call();
     verify(logger).warn(eq("Update call from {}: {}\n{}"), eq("1.2.3.4.5"), eq("test exception"),
@@ -172,7 +168,7 @@ class BotHandlerFastTest {
     var responseEvent = handler.handleRequest(requestEvent, context);
 
     // then
-    verify(context).getAwsRequestId();
+    verify(handler).setContext(context);
     verifyNoInteractions(logger);
 
     assertAll("Response", () -> assertEquals("{\"test\":\"pass\"}", responseEvent.getBody()),
@@ -180,4 +176,16 @@ class BotHandlerFastTest {
         () -> assertEquals(200, responseEvent.getStatusCode()));
   }
 
+  private static class TestHandler extends BotHandler {
+
+    protected TestHandler(UpdateFactory updateFactory) {
+      super(updateFactory);
+    }
+
+    @Override
+    protected void setContext(Context context) {
+      // do nothing
+    }
+
+  }
 }

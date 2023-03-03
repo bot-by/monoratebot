@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package uk.bot_by.monoratebot.bot;
+package uk.bot_by.cloud_bot.telegram_bot;
 
 public enum TelegramField {
 

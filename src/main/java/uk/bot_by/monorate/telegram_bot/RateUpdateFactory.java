@@ -13,13 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package uk.bot_by.monoratebot.bot;
+package uk.bot_by.monorate.telegram_bot;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.json.JSONObject;
+import uk.bot_by.cloud_bot.telegram_bot.AbstractUpdateFactory;
+import uk.bot_by.cloud_bot.telegram_bot.Update;
 
-public interface UpdateFactory {
+public class RateUpdateFactory extends AbstractUpdateFactory {
 
-  @Nullable Update parseUpdate(@NotNull String updateText);
+  @Override
+  public Update parseMessage(JSONObject message) {
+    return null;
+  }
 
 }

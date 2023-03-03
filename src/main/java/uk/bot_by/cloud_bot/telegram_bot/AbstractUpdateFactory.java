@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package uk.bot_by.monoratebot.bot;
+package uk.bot_by.cloud_bot.telegram_bot;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -28,7 +28,7 @@ public abstract class AbstractUpdateFactory implements UpdateFactory {
   private static final int MAX_SUBSTRING_LENGTH = 1024;
   protected final Logger logger = LoggerFactory.getLogger(getClass());
 
-  abstract Update parseMessage(JSONObject message);
+  public abstract Update parseMessage(JSONObject message);
 
   public @Nullable Update parseUpdate(@NotNull String updateText) {
     Update update = null;

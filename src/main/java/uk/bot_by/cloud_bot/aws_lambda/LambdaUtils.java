@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package uk.bot_by.monoratebot.aws_lambda;
+package uk.bot_by.cloud_bot.aws_lambda;
 
 import static java.util.Collections.singletonMap;
 

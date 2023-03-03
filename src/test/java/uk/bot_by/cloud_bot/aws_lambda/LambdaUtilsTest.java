@@ -1,4 +1,4 @@
-package uk.bot_by.monoratebot.aws_lambda;
+package uk.bot_by.cloud_bot.aws_lambda;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.collection.IsMapContaining.hasEntry;
@@ -17,7 +17,7 @@ class LambdaUtilsTest {
 
   @DisplayName("Returns HTTP 200, application/json")
   @Test
-  public void getResponseEvent() {
+  void getResponseEvent() {
     // given
     Object object = mock(Object.class);
 
@@ -36,7 +36,7 @@ class LambdaUtilsTest {
 
   @DisplayName("Returns HTTP 200, just OK")
   @Test
-  public void responseOK() {
+  void responseOK() {
     // when
     APIGatewayProxyResponseEvent responseEvent = LambdaUtils.responseOK();
 

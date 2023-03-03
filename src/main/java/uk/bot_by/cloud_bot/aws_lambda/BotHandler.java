@@ -13,8 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package uk.bot_by.monoratebot.aws_lambda;
+package uk.bot_by.cloud_bot.aws_lambda;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
@@ -28,11 +27,9 @@ import java.util.Optional;
 import org.jetbrains.annotations.VisibleForTesting;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.slf4j.MDC;
-import uk.bot_by.monoratebot.bot.RateUpdateFactory;
-import uk.bot_by.monoratebot.bot.UpdateFactory;
+import uk.bot_by.cloud_bot.telegram_bot.UpdateFactory;
 
-public class BotHandler implements
+public abstract class BotHandler implements
     RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
 
   private static final String FORWARDED_FOR = "X-Forwarded-For";
@@ -41,19 +38,17 @@ public class BotHandler implements
 
   private final UpdateFactory updateFactory;
 
-  public BotHandler() {
-    this(new RateUpdateFactory());
-  }
-
   @VisibleForTesting
-  BotHandler(UpdateFactory updateFactory) {
+  protected BotHandler(UpdateFactory updateFactory) {
     this.updateFactory = updateFactory;
   }
+
+  abstract protected void setContext(Context context);
 
   @Override
   public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent requestEvent,
       Context context) {
-    MDC.put("@aws-request-id@", context.getAwsRequestId());
+    setContext(context);
 
     Optional<APIGatewayProxyResponseEvent> responseEvent = empty();
     var requestEventBody = requestEvent.getBody();

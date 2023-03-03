@@ -1,4 +1,4 @@
-package uk.bot_by.monoratebot.bot;
+package uk.bot_by.cloud_bot.telegram_bot;
 
 import static java.util.Collections.singleton;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -107,7 +107,7 @@ class AbstractUpdateFactoryTest {
   static class TestUpdateFactory extends AbstractUpdateFactory {
 
     @Override
-    Update parseMessage(JSONObject message) {
+    public Update parseMessage(JSONObject message) {
       return null;
     }
 

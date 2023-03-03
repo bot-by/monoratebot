@@ -1,4 +1,4 @@
-package uk.bot_by.monoratebot.bot;
+package uk.bot_by.cloud_bot.telegram_bot;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
@@ -6,13 +6,13 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static uk.bot_by.monoratebot.bot.TelegramUtils.deleteMessage;
-import static uk.bot_by.monoratebot.bot.TelegramUtils.getChatId;
-import static uk.bot_by.monoratebot.bot.TelegramUtils.getChatTitle;
-import static uk.bot_by.monoratebot.bot.TelegramUtils.getId;
-import static uk.bot_by.monoratebot.bot.TelegramUtils.getMessageId;
-import static uk.bot_by.monoratebot.bot.TelegramUtils.getTitle;
-import static uk.bot_by.monoratebot.bot.TelegramUtils.isBotMessage;
+import static uk.bot_by.cloud_bot.telegram_bot.TelegramUtils.deleteMessage;
+import static uk.bot_by.cloud_bot.telegram_bot.TelegramUtils.getChatId;
+import static uk.bot_by.cloud_bot.telegram_bot.TelegramUtils.getChatTitle;
+import static uk.bot_by.cloud_bot.telegram_bot.TelegramUtils.getId;
+import static uk.bot_by.cloud_bot.telegram_bot.TelegramUtils.getMessageId;
+import static uk.bot_by.cloud_bot.telegram_bot.TelegramUtils.getTitle;
+import static uk.bot_by.cloud_bot.telegram_bot.TelegramUtils.isBotMessage;
 
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,7 +23,7 @@ import org.junit.jupiter.api.Test;
 @Tag("fast")
 class TelegramUtilsTest {
 
-  JSONObject message;
+  private JSONObject message;
 
   @BeforeEach
   void setUp() {
